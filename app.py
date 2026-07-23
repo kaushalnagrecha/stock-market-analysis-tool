@@ -15,6 +15,7 @@ logging.basicConfig(
 def build_app() -> gr.Blocks:
     """Builds the main Gradio application with center-aligned layout and consistent chart styling."""
     custom_css = """
+    <style>
     .gradio-container {
         max-width: 1500px !important;
         margin: 0 auto !important;
@@ -41,11 +42,13 @@ def build_app() -> gr.Blocks:
         min-height: 600px !important;
         height: 600px !important;
     }
+    </style>
     """
 
-    with gr.Blocks(css=custom_css) as demo:
+    with gr.Blocks() as demo:
         gr.HTML(
-            """
+            f"""
+            {custom_css}
             <div style="text-align: center; padding: 24px 0; background: linear-gradient(90deg, #1E1B4B 0%, #312E81 50%, #1E1B4B 100%); color: white; border-radius: 12px; margin-bottom: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
                 <h1 style="margin: 0; font-size: 2.3rem; font-weight: 800; letter-spacing: -0.02em;">📊 Stock Market Analysis Agent</h1>
                 <p style="margin: 6px 0 0 0; color: #A5B4FC; font-size: 1.05rem;">Multi-Agent AI Market Analytics & Layman Financial Explanation</p>

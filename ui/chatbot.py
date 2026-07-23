@@ -49,7 +49,8 @@ def create_chatbot_tab() -> None:
             "Which industries are performing best right now?",
             "What are the biggest risks facing Tesla (TSLA)?"
         ],
-        inputs=msg_input
+        inputs=msg_input,
+        cache_examples=False
     )
 
     # Event handlers
