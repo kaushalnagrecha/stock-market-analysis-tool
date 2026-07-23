@@ -41,17 +41,17 @@ def create_chatbot_tab() -> None:
         clear_btn = gr.Button("Clear Chat 🗑️", variant="secondary", scale=1)
 
     gr.Markdown("### 💡 Example Questions")
-    gr.Examples(
-        examples=[
-            "Analyze AAPL for me.",
-            "Compare NVIDIA (NVDA) and AMD over the last 6 months.",
-            "Why is the software and cloud industry losing so much?",
-            "Which industries are performing best right now?",
-            "What are the biggest risks facing Tesla (TSLA)?"
-        ],
-        inputs=msg_input,
-        cache_examples=False
-    )
+    examples = [
+        "Analyze AAPL for me.",
+        "Compare NVIDIA (NVDA) and AMD over the last 6 months.",
+        "Why is the software and cloud industry losing so much?",
+        "Which industries are performing best right now?",
+        "What are the biggest risks facing Tesla (TSLA)?"
+    ]
+    with gr.Row():
+        for ex in examples:
+            btn = gr.Button(ex, size="sm", variant="secondary")
+            btn.click(fn=lambda text=ex: text, outputs=msg_input)
 
     # Event handlers
     msg_input.submit(
